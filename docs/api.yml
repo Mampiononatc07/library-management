@@ -58,8 +58,7 @@ components:
           type: string
         bookName:
           type: string
-        author:
-          #TODO1: set it as a component with properties : id, name, sex (M or F)
+        Author:
           type: string
         pageNumbers:
           type: integer
@@ -72,3 +71,15 @@ components:
         releaseDate:
           type: string
           format: date
+    Author:
+      type: object
+      properties:
+        id:
+          type: string
+        authorName:
+          type: string
+        sex:
+          type: string
+          enum:
+            - M
+            - F
