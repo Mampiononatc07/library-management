@@ -48,7 +48,63 @@ paths:
                 items:
                   $ref: '#/components/schemas/Book'
   /authors:
-  #TODO2: complete GET (can be filtered by name) - PUT - DELETE
+    get:
+      summary: Get all Authors
+      description: Retrieve authors filtered by authorName.
+      operationId: getAuthors
+      parameters:
+        - in: query
+          name: authorName
+          description: Filter authors by name
+          required: false
+          schema:
+            type: string
+      responses:
+        200:
+          description: List of filtered authors
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Author'
+    put:
+      summary: Create or update a list of authors
+      operationId: crupdateAuthors
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Author'
+      responses:
+        200:
+          description: The list of created or updated authors
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Author'
+    delete:
+      summary: Delete an author
+      description: Delete an author by id or authorName
+      operationId: deleteAuthor
+      parameters:
+        - name: authorName
+          in: query
+          description: The author's name to delete
+          required: false
+          schema:
+            type: string
+        - name: id
+          in: query
+          description: The author's ID to delete
+          required: false
+          schema:
+            type: integer
+            format: int64
 components:
   schemas:
     Book:
