@@ -9,19 +9,32 @@ paths:
   /books:
     get:
       summary: Get all books
-      description: The returned books are ordered by updated datetime.
+      description: Retrieve books ordered by updated datetime.
       operationId: getBooks
       parameters:
         - in: query
           name: bookName
-          description: Filter return books by given name
+          description: Filter books by name
           required: false
           schema:
             type: string
-        #TODO3: add parameter to filter books by intervals of dates of the releaseDate
+        - in: query
+          name: releaseDateFrom
+          description: Filter books with a release date equal to or after this date.
+          required: false
+          schema:
+            type: string
+            format: date
+        - in: query
+          name: releaseDateTo
+          description: Filter books with a release date equal to or before this date.
+          required: false
+          schema:
+            type: string
+            format: date
       responses:
         200:
-          description: The list of filtered books
+          description: List of filtered books
           content:
             application/json:
               schema:
