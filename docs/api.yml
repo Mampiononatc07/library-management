@@ -94,6 +94,34 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Book'
+  /books/authors:
+    put:
+      tags:
+        - "books"
+      summary: Update authors for multiple books
+      description: Update the authors of multiple books by specifying a list of bookId and authorId pairs.
+      operationId: updateBookAuthor
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: object
+                properties:
+                  bookId:
+                    type: string
+                  authorId:
+                    type: string
+      responses:
+        200:
+          description: Authors of the specified books updated successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Book'
   /authors:
     get:
       tags:
