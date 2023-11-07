@@ -158,25 +158,11 @@ paths:
 components:
   schemas:
     Book:
-      type: object
-      properties:
-        id:
-          type: string
-        bookName:
-          type: string
-        Author:
-          $ref: "#/components/schemas/Author"
-        pageNumbers:
-          type: integer
-        topic:
-          type: string
-          enum:
-            - ROMANCE
-            - COMEDY
-            - OTHER
-        releaseDate:
-          type: string
-          format: date
+      allOf:
+        - $ref: "#/components/schemas/crupdateBooks"
+        - properties:
+            Author:
+              $ref: "#/components/schemas/Author"
     Author:
       type: object
       properties:
@@ -191,3 +177,21 @@ components:
       enum:
         - M
         - F
+    crupdateBooks:
+      type: object
+      properties:
+        id:
+          type: string
+        bookName:
+          type: string
+        pageNumbers:
+          type: integer
+        topic:
+          type: string
+          enum:
+            - ROMANCE
+            - COMEDY
+            - OTHER
+        releaseDate:
+          type: string
+          format: date
