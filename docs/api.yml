@@ -133,6 +133,28 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Author'
+  /delete:
+    delete:
+      tags:
+        - "authors"
+      summary: Delete authors
+      description: Delete authors by ID(s)
+      parameters:
+        - in: query
+          name: ids
+          description: The author ID(s) to delete (comma-separated list)
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Authors deleted successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Author'
 components:
   schemas:
     Book:
