@@ -24,8 +24,15 @@ paths:
           schema:
             type: string
         - in: query
-          name: releaseDate
-          description: Filter books with a release date equal to or after this date.
+          name: releaseDateFrom
+          description: Filter books with a release date equal to or after this date (ISO 8601 format).
+          required: false
+          schema:
+            type: string
+            format: date
+        - in: query
+          name: releaseDateTo
+          description: Filter books with a release date equal to or before this date (ISO 8601 format).
           required: false
           schema:
             type: string
