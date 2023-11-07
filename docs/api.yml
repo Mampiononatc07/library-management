@@ -156,8 +156,8 @@ components:
           type: string
         authorName:
           type: string
-        sex:
-          type: string
-          enum:
-            - M
-            - F
+    Sex:
+      type: string
+      enum:
+        - M
+        - F
