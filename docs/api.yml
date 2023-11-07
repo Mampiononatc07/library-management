@@ -67,6 +67,33 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Book'
+  /books/{bookId}/authors/{authorId}:
+    put:
+      tags:
+        - "books"
+      summary: Update the author of a Book
+      description: Modify the author of a book by specifying their respective IDs.
+      operationId: updateBookAuthor
+      parameters:
+        - name: bookId
+          in: path
+          description: The ID of the book to update.
+          required: true
+          schema:
+            type: string
+        - name: authorId
+          in: path
+          description: The ID of the new author.
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Author of the book updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Book'
   /authors:
     get:
       tags:
@@ -159,7 +186,7 @@ components:
   schemas:
     Book:
       allOf:
-        - $ref: "#/components/schemas/crupdateBooks"
+        - $ref: "#/components/schemas/CrupdateBooks"
         - properties:
             Author:
               $ref: "#/components/schemas/Author"
@@ -177,7 +204,7 @@ components:
       enum:
         - M
         - F
-    crupdateBooks:
+    CrupdateBooks:
       type: object
       properties:
         id:
