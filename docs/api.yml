@@ -19,15 +19,8 @@ paths:
           schema:
             type: string
         - in: query
-          name: releaseDateFrom
+          name: releaseDate
           description: Filter books with a release date equal to or after this date.
-          required: false
-          schema:
-            type: string
-            format: date
-        - in: query
-          name: releaseDateTo
-          description: Filter books with a release date equal to or before this date.
           required: false
           schema:
             type: string
@@ -137,7 +130,7 @@ components:
         bookName:
           type: string
         Author:
-          type: string
+          $ref: "#/components/schemas/Author"
         pageNumbers:
           type: integer
         topic:
