@@ -8,6 +8,7 @@ servers:
 tags:
   - name: books
   - name: authors
+  - name: import
 paths:
   /books:
     get:
@@ -405,6 +406,33 @@ components:
             - ROMANCE
             - COMEDY
             - OTHER
+    ImportBook:
+      type: object
+      properties:
+        data:
+          oneOf:
+            - $ref: '#/components/schemas/ImportBookExcel'
+            - $ref: '#/components/schemas/ImportBookJSON'
+    ImportBookExcel:
+      type: object
+      properties:
+        file:
+          type: string
+    ImportBookJSON:
+      type: object
+      properties:
+        bookName:
+          type: string
+        author:
+          type: string
+        pageNumbers:
+          type: integer
+        topic:
+          type: string
+        releaseDate:
+          type: string
+        idAuthor:
+          type: string
   parameters:
     queryPagination:
       name: page
