@@ -474,6 +474,25 @@ components:
           type: string
         idAuthor:
           type: string
+    ImportAuthor:
+      type: object
+      properties:
+        data:
+          oneOf:
+            - $ref: '#/components/schemas/ImportAuthorExcel'
+            - $ref: '#/components/schemas/ImportAuthorJSON'
+    ImportAuthorExcel:
+      type: object
+      properties:
+        file:
+          type: string
+    ImportAuthorJSON:
+      type: object
+      properties:
+        authorName:
+          type: string
+        sex:
+          type: string
   parameters:
     queryPagination:
       name: page
