@@ -36,19 +36,8 @@ paths:
           required: false
           schema:
             type: string
-            format: date
-        - in: query
-          name: page
-          description: Page number for pagination 
-          required: false
-          schema:
-            type: integer
-        - in: query
-          name: pageSize
-          description: Number of items per page 
-          required: false
-          schema:
-            type: integer
+        - $ref: '#/components/parameters/queryPagination'
+        - $ref: '#/components/parameters/pathPagination'
       responses:
         200:
           description: List of filtered books
@@ -148,18 +137,8 @@ paths:
           required: false
           schema:
             type: string
-        - in: path
-          name: page
-          description: Page number for pagination 
-          required: true
-          schema:
-            type: integer
-        - in: path
-          name: pageSize
-          description: Number of items per page 
-          required: true
-          schema:
-            type: integer
+        - $ref: '#/components/parameters/queryPagination'
+        - $ref: '#/components/parameters/pathPagination'
       responses:
         200:
           description: List of filtered authors
@@ -190,7 +169,7 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Author'
-  /delete/{aid}:  
+  /delete/{aid}:
     delete:
       tags:
         - "authors"
@@ -271,6 +250,18 @@ components:
             - ROMANCE
             - COMEDY
             - OTHER
-        releaseDate:
-          type: string
-          format: date
+  parameters:
+    queryPagination:
+      name: page
+      in: query
+      description: Page number for pagination
+      required: true
+      schema:
+        type: integer
+    pathPagination:
+      name: pageSize
+      in: path
+      description: Number of items per page
+      required: true
+      schema:
+        type: integer
